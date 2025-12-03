@@ -1,100 +1,113 @@
 import { motion } from "framer-motion";
-import { Heart, Moon, Activity, Zap, Shield, Smartphone } from "lucide-react";
+import {
+  Bell,
+  BarChart3,
+  Shield,
+  Zap,
+  Globe,
+  History,
+} from "lucide-react";
 
 const features = [
   {
-    icon: Heart,
-    title: "Heart Rate Monitoring",
+    icon: Bell,
+    title: "Instant Notifications",
     description:
-      "Precision sensors track your heart rate 24/7, providing real-time insights into your cardiovascular health.",
+      "Get push notifications the moment someone follows or unfollows you. Never miss a change.",
+    color: "hsl(199, 89%, 48%)",
   },
   {
-    icon: Moon,
-    title: "Sleep Analysis",
+    icon: BarChart3,
+    title: "Analytics Dashboard",
     description:
-      "Advanced sleep tracking measures your sleep stages, quality, and patterns to optimize your rest.",
+      "Beautiful charts and insights showing your follower growth trends over time.",
+    color: "hsl(262, 83%, 58%)",
   },
   {
-    icon: Activity,
-    title: "Activity Tracking",
+    icon: Globe,
+    title: "Multi-Platform Support",
     description:
-      "Automatically detects and records your daily activities, steps, and calories burned.",
+      "Track followers across Instagram, Twitter, TikTok, YouTube, and more in one place.",
+    color: "hsl(160, 84%, 39%)",
   },
   {
-    icon: Zap,
-    title: "7-Day Battery",
+    icon: History,
+    title: "Complete History",
     description:
-      "Ultra-efficient power management ensures a full week of use on a single charge.",
+      "Access your full follower history. See who followed and unfollowed with timestamps.",
+    color: "hsl(24, 95%, 53%)",
   },
   {
     icon: Shield,
-    title: "Premium Materials",
+    title: "Privacy First",
     description:
-      "Crafted from aerospace-grade titanium with a hypoallergenic inner coating for all-day comfort.",
+      "Your data stays secure. We never share your information or post on your behalf.",
+    color: "hsl(350, 89%, 60%)",
   },
   {
-    icon: Smartphone,
-    title: "Seamless Sync",
+    icon: Zap,
+    title: "Lightning Fast",
     description:
-      "Instantly syncs with the NuvroRing app on iOS and Android for comprehensive health insights.",
+      "Real-time syncing ensures you see changes within seconds of them happening.",
+    color: "hsl(199, 89%, 48%)",
   },
 ];
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="py-24 md:py-32 relative">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-charcoal-light/30 to-background" />
-      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[120px]" />
+    <section id="features" className="py-24 relative">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background" />
 
       <div className="container relative z-10 mx-auto px-6">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-2xl mx-auto mb-16 md:mb-24"
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-16"
         >
-          <span className="text-primary text-sm tracking-[0.3em] uppercase mb-4 block">
+          <span className="text-primary text-sm font-semibold tracking-wider uppercase mb-4 block">
             Features
           </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light mb-6">
-            Engineered for
-            <span className="text-gradient-gold block">Excellence</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            Everything you need to{" "}
+            <span className="text-gradient">track growth</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Every detail meticulously designed to deliver an unparalleled
-            experience in health monitoring and style.
+            Powerful tools to understand your audience and grow your following
+            across all platforms.
           </p>
         </motion.div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative p-8 rounded-2xl bg-card/50 border border-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_hsl(43,74%,49%,0.1)]"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -4 }}
+              className="group bg-card rounded-2xl p-6 shadow-card hover:shadow-elevated transition-all duration-300 border border-border/50 hover:border-primary/30"
             >
               {/* Icon */}
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
-                <feature.icon className="w-7 h-7 text-primary" />
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
+                style={{ backgroundColor: `${feature.color}15` }}
+              >
+                <feature.icon size={24} style={{ color: feature.color }} />
               </div>
 
               {/* Content */}
-              <h3 className="font-display text-xl md:text-2xl font-medium mb-3 text-foreground">
+              <h3 className="text-xl font-semibold mb-2 text-foreground">
                 {feature.title}
               </h3>
               <p className="text-muted-foreground leading-relaxed">
                 {feature.description}
               </p>
-
-              {/* Hover Gradient */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
           ))}
         </div>

@@ -1,65 +1,74 @@
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+
+const benefits = [
+  "Free forever plan available",
+  "No credit card required",
+  "Connect unlimited accounts",
+  "Cancel anytime",
+];
 
 const CTASection = () => {
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-charcoal to-background" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/5 blur-[200px]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-[120px]" />
 
       <div className="container relative z-10 mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto"
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto text-center"
         >
-          <span className="text-primary text-sm tracking-[0.3em] uppercase mb-4 block">
-            Limited Edition
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-7xl font-light mb-6">
-            Be Among the
-            <span className="text-gradient-gold block mt-2">First</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            Ready to track your{" "}
+            <span className="text-gradient">followers</span>?
           </h2>
-          <p className="text-muted-foreground text-lg md:text-xl mb-10 max-w-xl mx-auto">
-            Pre-order now and receive exclusive early-bird pricing, priority
-            shipping, and a complimentary premium charging case.
+          <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
+            Join thousands of creators and businesses who use FollowTrack to
+            understand their audience and grow faster.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="luxury" size="xl">
-              Pre-Order for $399
-              <ArrowRight className="ml-2" size={18} />
-            </Button>
-            <Button variant="heroOutline" size="xl">
-              Learn More
-            </Button>
-          </div>
-
-          {/* Trust Badges */}
+          {/* Benefits */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-wrap items-center justify-center gap-8 mt-12 pt-8 border-t border-border/30"
+            transition={{ delay: 0.2 }}
+            className="flex flex-wrap justify-center gap-4 mb-10"
           >
-            {[
-              "Free Shipping",
-              "30-Day Returns",
-              "2-Year Warranty",
-              "Secure Checkout",
-            ].map((badge, index) => (
-              <span
+            {benefits.map((benefit, index) => (
+              <div
                 key={index}
-                className="text-sm text-muted-foreground tracking-wide"
+                className="flex items-center gap-2 text-sm text-muted-foreground"
               >
-                {badge}
-              </span>
+                <div className="w-5 h-5 rounded-full bg-emerald/10 flex items-center justify-center">
+                  <Check size={12} className="text-emerald" />
+                </div>
+                {benefit}
+              </div>
             ))}
+          </motion.div>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <Button variant="gradient" size="xl">
+              Start Tracking Free
+              <ArrowRight size={18} />
+            </Button>
+            <Button variant="social" size="xl">
+              View Pricing
+            </Button>
           </motion.div>
         </motion.div>
       </div>
